@@ -127,11 +127,12 @@ function changeImage(imageFileName) {
 				<%-- <p> <b>재고 수</b> : <%=rs.getLong("p_unitsInStock")%> --%>
 
 				<%
-				java.util.Date date1 = new java.util.Date(rs.getDate("p_releaseDate").getTime());		
-				SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-				String strDate = dateFormat.format(date1);
+				    java.sql.Date sqlDate = rs.getDate("p_releaseDate");
+				    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd"); // 데이터베이스에 맞게 패턴 변경
+				    String strDate = dateFormat.format(sqlDate);
 				%>
-				<p> <b>출시일</b> : <%=strDate%>
+				<p><b>출시일</b>: <%=strDate%>
+
 				</p>				
         			<%
 				    // 이미 가져온 상품 정보
